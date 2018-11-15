@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<name>
+		cloudpayments
+	</name>
+	<settings>
+		<variable>public_id</variable>
+		<name>PUBLIC ID</name>
+	</settings>
+	<settings>
+		<variable>API SECRET</variable>
+		<name>api_key</name>
+	</settings>
+</module>
