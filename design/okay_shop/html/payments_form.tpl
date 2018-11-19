@@ -69,7 +69,7 @@
             <input type="submit" class="button" value="{$lang->form_to_pay}">
         </form>
     </div>
-{elseif $payment_module == "Paypal"}
+{elseif $payment_module == "Cloudpayment"}
 
     <button id="payButton">Открыть форму оплаты</button>
     <script src="https://widget.cloudpayments.kz/bundles/cloudpayments"></script>
@@ -85,16 +85,17 @@
                     accountId: '{$order->email}',
                 },
                 function (options) { // success
-                    console.log(options);
+
                     $.post('{$ipn_url}', {
                         'invoice': options['invoiceId'],
                     }, function (data) {
                         console.log(data);
                     });
-					window.location.href = '{$success_url}';
+					//window.location.href = '{$success_url}';
                 },
                 function (reason, options) { // fail
-                    window.location.href = '{$fail_ur}';
+                    console.log(reason);
+                    //window.location.href = '{$fail_ur}';
                 });
         };
         $("#payButton").on("click", payHandler); //кнопка "Оплатить"

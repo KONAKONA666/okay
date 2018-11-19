@@ -2,13 +2,13 @@
 
 require_once('api/Okay.php');
 
-class Paypal extends Okay
+class Cloudpayments extends Okay
 {	
 	public function checkout_form($order_id, $button_text = null)
 	{
 		
 		if(empty($button_text))
-			$button_text = 'Checkout with Paypal';
+			$button_text = 'Checkout with cloudpayment';
 		
 		$order = $this->orders->get_order((int)$order_id);
 		$purchases = $this->orders->get_purchases(array('order_id'=>intval($order->id)));

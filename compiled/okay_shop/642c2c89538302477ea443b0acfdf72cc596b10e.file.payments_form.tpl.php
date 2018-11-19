@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.19-dev, created on 2018-11-15 13:41:29
+<?php /* Smarty version Smarty-3.1.19-dev, created on 2018-11-19 14:43:08
          compiled from "design\okay_shop\html\payments_form.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:54345beafb9be95520-70049369%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '642c2c89538302477ea443b0acfdf72cc596b10e' => 
     array (
       0 => 'design\\okay_shop\\html\\payments_form.tpl',
-      1 => 1542278474,
+      1 => 1542627762,
       2 => 'file',
     ),
   ),
@@ -169,7 +169,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ">
         </form>
     </div>
-<?php } elseif ($_smarty_tpl->tpl_vars['payment_module']->value=="Paypal") {?>
+<?php } elseif ($_smarty_tpl->tpl_vars['payment_module']->value=="Cloudpayment") {?>
 
     <button id="payButton">Открыть форму оплаты</button>
     <script src="https://widget.cloudpayments.kz/bundles/cloudpayments"></script>
@@ -189,18 +189,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ',
                 },
                 function (options) { // success
-                    console.log(options);
+
                     $.post('<?php echo $_smarty_tpl->tpl_vars['ipn_url']->value;?>
 ', {
                         'invoice': options['invoiceId'],
                     }, function (data) {
                         console.log(data);
                     });
-					window.location.href = '<?php echo $_smarty_tpl->tpl_vars['success_url']->value;?>
+					//window.location.href = '<?php echo $_smarty_tpl->tpl_vars['success_url']->value;?>
 ';
                 },
                 function (reason, options) { // fail
-                    window.location.href = '<?php echo $_smarty_tpl->tpl_vars['fail_ur']->value;?>
+                    console.log(reason);
+                    //window.location.href = '<?php echo $_smarty_tpl->tpl_vars['fail_ur']->value;?>
 ';
                 });
         };
